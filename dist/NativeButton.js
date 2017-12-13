@@ -1,32 +1,48 @@
-'use strict';
+'use strict'
 
-Object.defineProperty(exports, "__esModule", {
+Object.defineProperty(exports, '__esModule', {
   value: true
-});
+})
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends =
+  Object.assign ||
+  function(target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i]
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key]
+        }
+      }
+    }
+    return target
+  }
 
-var _react = require('react');
+var _react = require('react')
 
-var _react2 = _interopRequireDefault(_react);
+var _react2 = _interopRequireDefault(_react)
 
-var _propTypes = require('prop-types');
+var _propTypes = require('prop-types')
 
-var _propTypes2 = _interopRequireDefault(_propTypes);
+var _propTypes2 = _interopRequireDefault(_propTypes)
 
-var _createReactClass = require('create-react-class');
+var _createReactClass = require('create-react-class')
 
-var _createReactClass2 = _interopRequireDefault(_createReactClass);
+var _createReactClass2 = _interopRequireDefault(_createReactClass)
 
-var _reactNative = require('react-native');
+var _reactNative = require('react-native')
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj }
+}
 
 var styles = _reactNative.StyleSheet.create({
   button: {
     flexDirection: 'row',
+    borderRadius: 2,
     alignSelf: 'stretch',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    marginLeft: 5
   },
   textButton: {
     fontSize: 14,
@@ -35,18 +51,19 @@ var styles = _reactNative.StyleSheet.create({
   opacity: {
     opacity: 0.8
   }
-});
+})
 
 var NativeButton = (0, _createReactClass2.default)({
   displayName: 'NativeButton',
-
 
   propTypes: _extends({}, _reactNative.TouchableWithoutFeedback.propTypes, {
     textStyle: _reactNative.Text.propTypes.style,
     disabledStyle: _reactNative.Text.propTypes.style,
     children: _propTypes2.default.node.isRequired,
     underlayColor: _propTypes2.default.string,
-    background: _reactNative.TouchableNativeFeedback.propTypes ? _reactNative.TouchableNativeFeedback.propTypes.background : _propTypes2.default.any
+    background: _reactNative.TouchableNativeFeedback.propTypes
+      ? _reactNative.TouchableNativeFeedback.propTypes.background
+      : _propTypes2.default.any
   }),
 
   statics: {
@@ -58,24 +75,30 @@ var NativeButton = (0, _createReactClass2.default)({
       textStyle: null,
       disabledStyle: null,
       underlayColor: null
-    };
+    }
   },
 
   _renderText: function _renderText() {
     // If children is not a string don't wrapp it in a Text component
     if (typeof this.props.children !== 'string') {
-      return this.props.children;
+      return this.props.children
     }
 
     return _react2.default.createElement(
       _reactNative.Text,
-      { numberOfLines: 1, ellipsizeMode: _reactNative.Platform.OS === 'ios' ? 'clip' : 'tail', style: [styles.textButton, this.props.textStyle] },
+      {
+        numberOfLines: 1,
+        ellipsizeMode: _reactNative.Platform.OS === 'ios' ? 'clip' : 'tail',
+        style: [styles.textButton, this.props.textStyle]
+      },
       this.props.children
-    );
+    )
   },
 
   render: function render() {
-    var disabledStyle = this.props.disabled ? this.props.disabledStyle || styles.opacity : {};
+    var disabledStyle = this.props.disabled
+      ? this.props.disabledStyle || styles.opacity
+      : {}
 
     // Extract Button props
     var buttonProps = {
@@ -93,13 +116,15 @@ var NativeButton = (0, _createReactClass2.default)({
       onPressOut: this.props.onPressOut,
       onLongPress: this.props.onLongPress,
       pressRetentionOffset: this.props.pressRetentionOffset
-    };
+    }
 
     // Render Native Android Button
     if (NativeButton.isAndroid) {
       buttonProps = Object.assign(buttonProps, {
-        background: this.props.background || _reactNative.TouchableNativeFeedback.SelectableBackground()
-      });
+        background:
+          this.props.background ||
+          _reactNative.TouchableNativeFeedback.SelectableBackground()
+      })
 
       return _react2.default.createElement(
         _reactNative.TouchableNativeFeedback,
@@ -109,7 +134,7 @@ var NativeButton = (0, _createReactClass2.default)({
           { style: [styles.button, this.props.style, disabledStyle] },
           this._renderText()
         )
-      );
+      )
     }
 
     // Render default button
@@ -117,10 +142,11 @@ var NativeButton = (0, _createReactClass2.default)({
       _reactNative.TouchableHighlight,
       _extends({}, buttonProps, {
         style: [styles.button, this.props.style, disabledStyle],
-        underlayColor: this.props.underlayColor }),
+        underlayColor: this.props.underlayColor
+      }),
       this._renderText()
-    );
+    )
   }
-});
+})
 
-exports.default = NativeButton;
+exports.default = NativeButton

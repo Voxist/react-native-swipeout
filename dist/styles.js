@@ -1,19 +1,17 @@
-'use strict';
+'use strict'
 
-Object.defineProperty(exports, "__esModule", {
+Object.defineProperty(exports, '__esModule', {
   value: true
-});
+})
 
-var _reactNative = require('react-native');
+var _reactNative = require('react-native')
 
 var styles = _reactNative.StyleSheet.create({
   swipeout: {
     backgroundColor: '#dbddde',
     overflow: 'hidden'
   },
-  swipeoutBtnTouchable: {
-    flex: 1
-  },
+  swipeoutBtnTouchable: {},
   swipeoutBtn: {
     alignItems: 'center',
     backgroundColor: '#b6bec0',
@@ -26,6 +24,9 @@ var styles = _reactNative.StyleSheet.create({
     textAlign: 'center'
   },
   swipeoutBtns: {
+    alignItems: 'center',
+    justifyContent: 'center',
+
     bottom: 0,
     flex: 1,
     flexDirection: 'row',
@@ -43,6 +44,6 @@ var styles = _reactNative.StyleSheet.create({
   colorSecondary: {
     backgroundColor: '#fd9427'
   }
-});
+})
 
-exports.default = styles;
+exports.default = styles
