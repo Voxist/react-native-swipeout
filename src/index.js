@@ -166,7 +166,7 @@ var Swipeout = (0, _createReactClass2.default)({
       disabled: false,
       rowID: -1,
       sectionID: -1,
-      sensitivity: 0
+      sensitivity: 2
     }
   },
 
